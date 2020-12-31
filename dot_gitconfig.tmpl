@@ -1,0 +1,19 @@
+[user]
+	name = Steve Aquillano
+	email = {{ .email }}
+
+[core]
+	editor = nvim
+	pager = less -x1,5
+	compression = 9
+	excludesfile = ~/.gitignore
+
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	cb = rev-parse --abbrev-ref HEAD
+
+[push]
+	default = current
+
+[pull]
+	ff = only
