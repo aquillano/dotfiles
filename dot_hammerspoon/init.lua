@@ -124,11 +124,11 @@ sizeup.split_screen_partitions = {
   y = 0.5
 }
 sizeup.third_screen_partitions = {
-  x = 0.33, -- %
+  x = 0.33333, -- %
   y = 1.0
 }
 sizeup.two_third_screen_partitions = {
-  x = 0.66, -- %
+  x = 0.66667, -- %
   y = 1.0
 }
 sizeup.quarter_screen_partitions = {
