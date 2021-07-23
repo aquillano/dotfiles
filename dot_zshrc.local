@@ -1,1 +1,9 @@
 export EDITOR=nvim
+alias yt="DEBUG_PRINT_LIMIT=9999999 yarn test --verbose";
+
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "agkozak/zsh-z"
+
+zplug load --verbose

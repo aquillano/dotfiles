@@ -12,8 +12,8 @@ set hlsearch
 nnoremap <tab> %
 vnoremap <tab> %
 
-" quicker Esc
-inoremap jj <ESC>
+" quicker to vim command line
+nnoremap ; :
 
 if !exists('g:vscode')
   " enable true color
@@ -41,6 +41,8 @@ if !exists('g:vscode')
 
   " change <leader> from '\' to ','
   let mapleader = ','
+
+  let g:polyglot_disabled = ['typescript.plugin', 'typescriptreact.plugin']
 
   " Plugins
   call plug#begin('~/.local/share/nvim/plugged')
@@ -93,7 +95,7 @@ if !exists('g:vscode')
   let g:NERDTrimTrailingWhitespace = 1
 
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " On-demand loading
-  nnoremap <leader>[ :NERDTreeToggle<CR>
+  " nnoremap <leader>[ :NERDTreeToggle<CR>
 
   " Plug 'pangloss/vim-javascript' " See sheerun/vim-polyglot
   " Plug 'mxw/vim-jsx' " See sheerun/vim-polyglot
@@ -103,6 +105,12 @@ if !exists('g:vscode')
   Plug 'heavenshell/vim-jsdoc'
   Plug 'sheerun/vim-polyglot'
   " README: Loads language packs on-demand, fast
+  
+  " Better than plugins packaged with vim-polyglot?
+  " https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
   "coc Plug 'othree/javascript-libraries-syntax.vim'
   "coc let g:used_javascript_libs = 'requirejs,react'
@@ -116,6 +124,18 @@ if !exists('g:vscode')
   " Plug 'ianks/vim-tsx' " somethign similar added to vim-polyglot
 
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Remap keys for gotos
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " Jump to next or prev error
+  nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+  nmap <silent> g] <Plug>(coc-diagnostic-next)
+
+  " Code actions: automated changes or fixes for an issue
+  nmap <leader>do <Plug>(coc-codeaction)
+  nmap <leader>rn <Plug>(coc-rename)
 
   " NCM2 Install {{{
   "coc Plug 'ncm2/ncm2'
@@ -178,7 +198,8 @@ if !exists('g:vscode')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
   nmap <leader>b :Buffers<CR>
   nmap <leader>a :Files<CR>
-  nmap <leader>f :GFiles<CR>
+  nmap <C-p> :GFiles<CR>
+  nmap <leader>f :Rg<Space>
 
   "Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
   " TODO: Would this be useful again?
@@ -190,6 +211,11 @@ if !exists('g:vscode')
   Plug 'rizzatti/dash.vim'
 
   Plug 'ryanoasis/vim-devicons'
+  Plug 'kyazdani42/nvim-web-devicons' " Supported by barbar & nvim-tree
+  Plug 'kyazdani42/nvim-tree.lua'
+  nnoremap <leader>[ :NvimTreeToggle<CR>
+
+  Plug 'romgrk/barbar.nvim'
 
   " Add plugins to &runtimepath
   call plug#end()
@@ -209,6 +235,9 @@ if !exists('g:vscode')
   " Font
   "set guifont=Inconsolata-g:h11
   " set guifont=Fira\ Code
+
+  " quicker Esc
+  inoremap jj <ESC>
 
   " shortcut to toggle `set list`
   nmap <leader>l :set list!<CR>
@@ -235,9 +264,6 @@ if !exists('g:vscode')
 
   "nudge to keep lines under 80 character width
   set colorcolumn=85
-
-  " quicker to vim command line
-  nnoremap ; :
 
   " clear highlighting
   nnoremap <leader><space> :noh<cr>
@@ -275,5 +301,7 @@ if !exists('g:vscode')
   " let g:python3_host_prog = '/usr/local/bin/python3'
   let g:python_host_prog = 'python'
   let g:python3_host_prog = 'python3'
+
+  let g:rg_command = 'g:rg_binary --vimgrep --regexp --smart-case' " fzf.vim plugin
 
 endif
