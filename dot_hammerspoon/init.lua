@@ -51,6 +51,10 @@ hs.hotkey.bind({"ctrl", "alt", "cmd"}, "U", function()
   sizeup.send_window_left_two_thirds()
 end)
 
+hs.hotkey.bind({"ctrl", "alt", "cmd"}, "O", function()
+  sizeup.send_window_right_two_thirds()
+end)
+
 --- Quarter Screen Actions ---
 -- Send Window Upper Left
 hs.hotkey.bind({"cmd", "alt", "shift"}, "U", function()
@@ -246,6 +250,19 @@ function sizeup.send_window_left_two_thirds()
     x = s.x,
     y = s.y,
     w = (s.w * ssp.x) - sizeup.gutter().x,
+    h = s.h
+  })
+end
+
+function sizeup.send_window_right_two_thirds()
+  local s = sizeup.screen()
+  local ssp = sizeup.two_third_screen_partitions
+  local g = sizeup.gutter()
+  local win_width = (s.w * ssp.x) - sizeup.gutter().x
+  sizeup.set_frame("Right Two Thirds", {
+    x = s.x + (s.w - win_width),
+    y = s.y,
+    w = win_width,
     h = s.h
   })
 end

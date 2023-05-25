@@ -134,7 +134,7 @@ if !exists('g:vscode')
   nmap <silent> g] <Plug>(coc-diagnostic-next)
 
   " Code actions: automated changes or fixes for an issue
-  nmap <leader>do <Plug>(coc-codeaction)
+  nmap <leader>. <Plug>(coc-codeaction)
   nmap <leader>rn <Plug>(coc-rename)
 
   " NCM2 Install {{{
@@ -198,8 +198,10 @@ if !exists('g:vscode')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
   nmap <leader>b :Buffers<CR>
   nmap <leader>a :Files<CR>
+  nmap <leader>g :GFiles?<CR>
   nmap <C-p> :GFiles<CR>
-  nmap <leader>f :Rg<Space>
+  nmap <M-p> :GFiles<CR>
+  nmap <leader>/ :Rg<Space>
 
   "Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
   " TODO: Would this be useful again?
@@ -213,7 +215,6 @@ if !exists('g:vscode')
   Plug 'ryanoasis/vim-devicons'
   Plug 'kyazdani42/nvim-web-devicons' " Supported by barbar & nvim-tree
   Plug 'kyazdani42/nvim-tree.lua'
-  nnoremap <leader>[ :NvimTreeToggle<CR>
 
   Plug 'romgrk/barbar.nvim'
 
@@ -304,4 +305,44 @@ if !exists('g:vscode')
 
   let g:rg_command = 'g:rg_binary --vimgrep --regexp --smart-case' " fzf.vim plugin
 
+  " Fugitive conflict resolution
+  nnoremap gdj :diffget //2<CR>
+  nnoremap gdl :diffget //3<CR>
+
+  " Copy file path
+  nmap <leader>cp :let @*=expand("%")<CR>
+
+lua <<EOF
+  require'nvim-tree'.setup {
+    disable_netrw       = true,
+    hijack_netrw        = true,
+    open_on_setup       = false,
+    ignore_ft_on_setup  = {},
+    auto_close          = false,
+    open_on_tab         = false,
+    hijack_cursor       = false,
+    update_cwd          = false,
+    lsp_diagnostics     = false,
+    update_focused_file = {
+      enable      = false,
+      update_cwd  = false,
+      ignore_list = {}
+    },
+    system_open = {
+      cmd  = nil,
+      args = {}
+    },
+    view = {
+      width = 30,
+      side = 'left',
+      auto_resize = false,
+      mappings = {
+        custom_only = false,
+        list = {}
+      }
+    }
+  }
+EOF
+
+  nnoremap <leader>[ :NvimTreeToggle<CR>
 endif
