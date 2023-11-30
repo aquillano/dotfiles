@@ -1,5 +1,7 @@
+# export EDITOR="nvr -s"
 export EDITOR=nvim
-alias yt="DEBUG_PRINT_LIMIT=9999999 yarn test --verbose";
+alias yt="DEBUG_PRINT_LIMIT=9999999 yarn test --verbose"
+alias yw="yarn workspace "
 
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -9,4 +11,9 @@ zplug "agkozak/zsh-z"
 zplug load --verbose
 
 export PATH=$PATH:/Users/steve/.cargo/bin
-export PATH="/usr/local/opt/curl/bin:$PATH
+export REQUESTS_CA_BUNDLE=~/.trusted-ca-bundle.pem
+export NODE_EXTRA_CA_CERTS="$HOME/.trusted-ca-bundle.pem"
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export USERNAME="aquillano"
+export BRANCH_NAME="$USERNAME/slw"
+export APP_NAME="slw-$USERNAME"

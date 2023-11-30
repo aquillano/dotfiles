@@ -9,8 +9,10 @@
 	excludesfile = ~/.gitignore
 
 [alias]
+	cfb = !git checkout $(git branch | fzf)
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	cb = rev-parse --abbrev-ref HEAD
+	rm-merged = !git pull --prune && git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D
 
 [push]
 	default = current
@@ -18,12 +20,23 @@
 [pull]
 	ff = only
 
-# define command which will be used when "nvim" is set as a merge tool
-[mergetool "nvim"]
-  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
 # set "nvim" as tool for merging
 [merge]
-  tool = nvim
+	tool = nvim
+
 # automatically launch merge tool without displaying a prompt
 [mergetool]
-  prompt = false
+	prompt = false
+
+# define command which will be used when "nvim" is set as a merge tool
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
