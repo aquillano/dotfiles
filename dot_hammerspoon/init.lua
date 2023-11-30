@@ -61,7 +61,7 @@ hs.hotkey.bind({"cmd", "alt", "shift"}, "U", function()
   sizeup.send_window_upper_left()
 end)
 -- Send Window Upper Right
-hs.hotkey.bind({"cmd", "alt", "shift"}, "I", function()
+hs.hotkey.bind({"cmd", "alt", "shift"}, "O", function()
   sizeup.send_window_upper_right()
 end)
 -- Send Window Lower Left
@@ -69,7 +69,7 @@ hs.hotkey.bind({"cmd", "alt", "shift"}, "J", function()
   sizeup.send_window_lower_left()
 end)
 -- Send Window Lower Right
-hs.hotkey.bind({"cmd", "alt", "shift"}, "K", function()
+hs.hotkey.bind({"cmd", "alt", "shift"}, "L", function()
   sizeup.send_window_lower_right()
 end)
 
