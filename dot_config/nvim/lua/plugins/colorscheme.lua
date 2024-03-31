@@ -8,10 +8,10 @@ return {
     enabled = false,
   },
   {
-    'marko-cerovac/material.nvim',
+    "marko-cerovac/material.nvim",
     lazy = false,
     priority = 1000,
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     init = function()
       vim.g.material_style = "oceanic"
     end,
@@ -20,7 +20,7 @@ return {
     -- end,
     opts = {
       high_visibility = {
-        darker = true  
+        darker = true,
       },
       plugins = { -- Uncomment the plugins that you use to highlight them
         -- Available plugins:

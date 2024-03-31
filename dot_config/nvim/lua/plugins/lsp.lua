@@ -1,6 +1,7 @@
 return {
   {
-  "nvimtools/none-ls.nvim",
-  enabled = false,
+    "nvimtools/none-ls.nvim",
+    enabled = false,
   },
 }
+

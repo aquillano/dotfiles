@@ -8,4 +8,4 @@ alias yw="yarn workspace "
 #zplug load --verbose
 
 #export REQUESTS_CA_BUNDLE=~/.trusted-ca-bundle.pem
-#export NODE_EXTRA_CA_CERTS="$HOME/.trusted-ca-bundle.pem"
+export NODE_EXTRA_CA_CERTS=/opt/homebrew/etc/ca-certificates/cert.pem
