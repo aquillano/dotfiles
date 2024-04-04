@@ -2,10 +2,9 @@ export EDITOR=nvim
 alias yt="DEBUG_PRINT_LIMIT=9999999 yarn test --verbose"
 alias yw="yarn workspace "
 
-#export ZPLUG_HOME=/usr/local/opt/zplug
-#source $ZPLUG_HOME/init.zsh
-#zplug "agkozak/zsh-z"
-#zplug load --verbose
-
-export REQUESTS_CA_BUNDLE=~/.trusted-ca-bundle.pem
+# export REQUESTS_CA_BUNDLE=~/.trusted-ca-bundle.pem
+export REQUESTS_CA_BUNDLE=/opt/homebrew/etc/ca-certificates/cert.pem
 export NODE_EXTRA_CA_CERTS=/opt/homebrew/etc/ca-certificates/cert.pem
+
+# let asdf support partial versions in legacy .nvmrc or .node-version files
+export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
