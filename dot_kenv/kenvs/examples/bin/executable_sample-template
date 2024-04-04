@@ -1,0 +1,9 @@
+#!/bin/sh
+
+NODE_NO_WARNINGS=1 \
+KENV=$(cd "$(dirname ${BASH_SOURCE[0]})"/.. &> /dev/null && pwd) \
+/Users/steve.aquillano/.knode/bin/node \
+--experimental-loader /Users/steve.aquillano/.kit/build/loader.js \
+/Users/steve.aquillano/.kit/run/terminal.js \
+/Users/steve.aquillano/.kenv/kenvs/examples/scripts/sample-template.js \
+"$@"

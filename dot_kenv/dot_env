@@ -1,0 +1,5 @@
+KIT=/Users/steve.aquillano/.kit
+KENV=/Users/steve.aquillano/.kenv
+KNODE=/Users/steve.aquillano/.knode
+KIT_TEMPLATE=default
+KIT_LOGIN=aquillano
