@@ -1,9 +1,12 @@
 return {
   {
-    "LazyVim/LazyVim",
+    "ii14/neorepl.nvim",
+  },
+  {
+    "mistweaverco/kulala.nvim",
     opts = {
-      colorscheme = "material",
+      default_env = "staging",
+      additional_curl_options = { "-L" },
     },
   },
 }
-

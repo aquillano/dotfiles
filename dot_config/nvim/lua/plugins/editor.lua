@@ -1,12 +1,35 @@
 return {
   {
-    "s1n7ax/nvim-window-picker",
-    name = "window-picker",
-    event = "VeryLazy",
-    version = "2.*",
-    config = function()
-      require("window-picker").setup()
-    end,
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "c",
+        "diff",
+        "graphql",
+        "html",
+        "http",
+        "javascript",
+        "jsdoc",
+        "json",
+        "jsonc",
+        "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+      },
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -24,6 +47,12 @@ return {
           hide_gitignored = false,
         },
       },
+    },
+  },
+  {
+    "ibhagwan/fzf-lua",
+    keys = {
+      { "<leader><space>", false },
     },
   },
 }

@@ -1,8 +1,5 @@
 session_name: ro
 windows:
-  - window_name: phy
-    panes:
-      - cd ~/src/roman/packages/apps/phy
   - window_name: cc
     panes:
       - cd ~/src/roman/packages/apps/care-center

@@ -132,31 +132,23 @@ font-weight: bold;
 /* purposely ignored */
 }</style>
   <style>
-  body {
+  .drag{
     -webkit-app-region: drag;
-  }
-
-  button, input, a {
-    -webkit-app-region: no-drag;
   }
 
   .no-drag {
     -webkit-app-region: no-drag;
   }
 
-  body {
-    
 
-    pointer-events: none
-  }
-
-  * {pointer-events: all;}
-  }
+  
 
   .drag-shadow {
     box-shadow: inset 0 0 .75rem #000000;
   }
 </style>
+
+
   <script>
     const { ipcRenderer } = require('electron');
     window.ipcRenderer = ipcRenderer;
@@ -207,7 +199,7 @@ font-weight: bold;
   <div class="px-8 bg-bg-base text-text-base h-screen w-screen flex flex-col justify-center bg-opacity"><h2 id="🔐-authenticating-with-github">🔐 Authenticating with GitHub</h2>
 <h2 id="httpsgithubcomlogindevice"><a class="text-primary ring-0 ring-opacity-0 focus:ring-0 focus:ring-opacity-0 focus:outline-none outline-none"  href="https://github.com/login/device">https://github.com/login/device</a></h2>
 <p class="pt-2"/>
-Code copied to clipboard: <code class="text-primary font-mono font-bold no-drag">EF16-2AE6</code>
+Code copied to clipboard: <code class="text-primary font-mono font-bold no-drag">A4A9-C729</code>
 
 <ol class="text-sm pt-3 ml-4 mb-4">
     <li>Paste the code on https://github.com/login/device</li>
@@ -242,6 +234,20 @@ Code copied to clipboard: <code class="text-primary font-mono font-bold no-drag"
     if(!closest || !closest?.id) return
     let {id = ""} = closest
     ipcRenderer.send("WIDGET_MOUSE_DOWN", {
+      dataset: {
+        ...event.target.dataset
+      },
+      targetId: id,
+      widgetId: window.widgetId,
+    })
+  })
+
+  // add "mouseup" handler
+  document.addEventListener("mouseup", (event) => {
+    let closest = event.target.closest("*[id]")
+    if(!closest || !closest?.id) return
+    let {id = ""} = closest
+    ipcRenderer.send("WIDGET_MOUSE_UP", {
       dataset: {
         ...event.target.dataset
       },

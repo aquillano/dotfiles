@@ -3,3 +3,7 @@ KENV=/Users/steve.aquillano/.kenv
 KNODE=/Users/steve.aquillano/.knode
 KIT_TEMPLATE=default
 KIT_LOGIN=aquillano
+
+KIT_EDITOR=/usr/bin/nvim
+KIT_TERMINAL=kitty
+
